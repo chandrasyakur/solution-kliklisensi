@@ -23,66 +23,64 @@ export const StepContact: React.FC<StepContactProps> = ({
     data.role.trim().length > 0;
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-4 space-y-6">
+    <div className="w-full max-w-2xl mx-auto px-4 py-2 space-y-6">
       {/* Step Header */}
       <div className="space-y-1">
-        <span className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
+        <span className="text-xs font-semibold uppercase tracking-wider text-[#017EFC]">
           Langkah 4 dari 4
         </span>
-        <h2 className="text-2xl font-bold text-white tracking-tight">
+        <h2 className="text-2xl font-bold text-[#202125] tracking-tight">
           Informasi PIC & Pengiriman Ringkasan Diagnostik
         </h2>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-[#515151]">
           Ringkasan analisis dan rekomendasi arsitektur digital akan langsung disajikan di layar berikutnya dan dikonfirmasi via WhatsApp.
         </p>
       </div>
 
-      <div className="space-y-5 bg-slate-900/60 border border-slate-800 p-6 rounded-2xl">
+      <div className="space-y-5 bg-white border border-[#E5E5E9] p-6 rounded-[14px] shadow-apple-sm">
         {/* Nama PIC */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-slate-200">
-            <User className="w-4 h-4 text-indigo-400" />
-            Nama Lengkap PIC / Pemilik Usaha <span className="text-pink-500">*</span>
+          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
+            <User className="w-4 h-4 text-[#017EFC]" />
+            Nama Lengkap PIC / Pemilik Usaha <span className="text-rose-500">*</span>
           </label>
           <input
             type="text"
             placeholder="Contoh: Budi Santoso"
             value={data.contactName}
             onChange={(e) => onChange({ contactName: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition"
+            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] placeholder-[#86868B] outline-none transition duration-150"
           />
         </div>
 
         {/* Nomor WhatsApp */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-slate-200">
-            <Phone className="w-4 h-4 text-emerald-400" />
-            Nomor WhatsApp Aktif <span className="text-pink-500">*</span>
+          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
+            <Phone className="w-4 h-4 text-[#10B981]" />
+            Nomor WhatsApp Aktif <span className="text-rose-500">*</span>
           </label>
-          <div className="relative">
-            <input
-              type="tel"
-              placeholder="0812xxxxxxxx atau 62812xxxxxxxx"
-              value={data.whatsapp}
-              onChange={(e) => onChange({ whatsapp: e.target.value })}
-              className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition"
-            />
-          </div>
-          <p className="text-[11px] text-slate-400">
+          <input
+            type="tel"
+            placeholder="0812xxxxxxxx atau 62812xxxxxxxx"
+            value={data.whatsapp}
+            onChange={(e) => onChange({ whatsapp: e.target.value })}
+            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] placeholder-[#86868B] outline-none transition duration-150"
+          />
+          <p className="text-[11px] text-[#515151]">
             Digunakan untuk konfirmasi summary & penjadwalan sesi diskusi solutif jika diperlukan.
           </p>
         </div>
 
         {/* Jabatan di Bisnis */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-slate-200">
-            <Award className="w-4 h-4 text-indigo-400" />
-            Peran / Jabatan Anda <span className="text-pink-500">*</span>
+          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
+            <Award className="w-4 h-4 text-[#017EFC]" />
+            Peran / Jabatan Anda <span className="text-rose-500">*</span>
           </label>
           <select
             value={data.role}
             onChange={(e) => onChange({ role: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm text-white outline-none transition cursor-pointer"
+            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] outline-none transition duration-150 cursor-pointer"
           >
             <option value="Owner / Founder">Owner / Founder</option>
             <option value="Co-Founder / Direktur">Co-Founder / Direktur</option>
@@ -94,22 +92,22 @@ export const StepContact: React.FC<StepContactProps> = ({
 
         {/* Email (Opsional) */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-slate-200">
-            <Mail className="w-4 h-4 text-indigo-400" />
-            Alamat Email <span className="text-slate-500 font-normal">(Opsional)</span>
+          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
+            <Mail className="w-4 h-4 text-[#017EFC]" />
+            Alamat Email <span className="text-[#86868B] font-normal">(Opsional)</span>
           </label>
           <input
             type="email"
             placeholder="nama@perusahaan.com"
             value={data.email}
             onChange={(e) => onChange({ email: e.target.value })}
-            className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-sm text-white placeholder-slate-500 outline-none transition"
+            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] placeholder-[#86868B] outline-none transition duration-150"
           />
         </div>
 
         {/* Security guarantee */}
-        <div className="flex items-center gap-2 pt-2 text-[11px] text-slate-400">
-          <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+        <div className="flex items-center gap-2 pt-2 text-[11px] text-[#515151]">
+          <ShieldCheck className="w-4 h-4 text-[#10B981] flex-shrink-0" />
           <span>Privasi data bisnis Anda 100% terjaga dan tidak akan dibagikan ke pihak ketiga mana pun.</span>
         </div>
       </div>
@@ -120,7 +118,7 @@ export const StepContact: React.FC<StepContactProps> = ({
           type="button"
           onClick={onBack}
           disabled={isLoading}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition"
+          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-[#515151] hover:text-[#202125] hover:bg-[#E5E5E9]/50 transition duration-150"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Kembali</span>
@@ -130,10 +128,10 @@ export const StepContact: React.FC<StepContactProps> = ({
           type="button"
           disabled={!isFormValid || isLoading}
           onClick={onSubmit}
-          className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-bold text-sm transition-all ${
+          className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm transition-all duration-150 ${
             isFormValid && !isLoading
-              ? 'bg-gradient-to-r from-indigo-600 via-indigo-500 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white shadow-lg shadow-indigo-600/30 transform hover:-translate-y-0.5'
-              : 'bg-slate-800 text-slate-500 cursor-not-allowed'
+              ? 'bg-[#017EFC] hover:bg-[#006ee0] text-white shadow-md shadow-blue-500/25 active:scale-[0.98]'
+              : 'bg-[#E5E5E9] text-[#86868B] cursor-not-allowed'
           }`}
         >
           {isLoading ? (
@@ -143,7 +141,7 @@ export const StepContact: React.FC<StepContactProps> = ({
             </>
           ) : (
             <>
-              <Sparkles className="w-4 h-4 text-indigo-200" />
+              <Sparkles className="w-4 h-4 text-white" />
               <span>Kirim & Lihat Laporan Diagnostik</span>
             </>
           )}

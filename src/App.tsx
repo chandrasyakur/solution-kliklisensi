@@ -36,7 +36,7 @@ const STEP_NAMES = [
 ];
 
 export const App: React.FC = () => {
-  const [step, setStep] = useState<number>(0); // 0: Intro, 1: Profil, 2: Bottlenecks, 3: Prioritas, 4: Kontak, 5: Result
+  const [step, setStep] = useState<number>(0);
   const [formData, setFormData] = useState<AssessmentFormData>(INITIAL_FORM_DATA);
   const [diagnostic, setDiagnostic] = useState<DiagnosticResult | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -74,20 +74,16 @@ export const App: React.FC = () => {
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
-      // 1. Generate diagnostik cerdas
       const result = generateDiagnostic(formData);
       setDiagnostic(result);
 
-      // 2. Submit ke database Supabase (+ local fallback)
       await submitAssessment(formData);
       refreshLeadCount();
 
-      // 3. Masuk ke halaman hasil
       setStep(5);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       console.error('Submission error:', err);
-      // Tetap lanjutkan ke hasil diagnostik
       const result = generateDiagnostic(formData);
       setDiagnostic(result);
       setStep(5);
@@ -104,10 +100,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col relative overflow-x-hidden">
-      {/* Background radial glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-indigo-600/10 via-violet-600/5 to-transparent blur-3xl pointer-events-none -z-10" />
-
+    <div className="min-h-screen bg-[#FAFAFC] text-[#202125] flex flex-col relative font-sans">
       {/* Top Header */}
       <Header
         onOpenAdmin={() => setIsAdminOpen(true)}
@@ -115,7 +108,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col justify-center py-6 sm:py-10">
+      <main className="flex-1 flex flex-col justify-center py-6 sm:py-8">
         {step > 0 && step < 5 && (
           <ProgressBar
             currentStep={step}
@@ -174,13 +167,15 @@ export const App: React.FC = () => {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 py-6 text-center text-xs text-slate-500">
-        <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div>
-            <span className="font-semibold text-slate-400">Klik Solution</span> • Digital Infrastructure & Modernization Portal
+      <footer className="border-t border-[#E5E5E9] bg-white py-6 text-center text-xs text-[#515151]">
+        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-[#202125]">Klik Lisensi</span>
+            <span className="text-[#86868B]">•</span>
+            <span>Digital Infrastructure & Business Diagnostic Portal</span>
           </div>
-          <div className="text-[11px] text-slate-600">
-            Subdomain target: <span className="text-slate-400 font-mono">solution.kliklisensi.com</span>
+          <div className="text-[11px] text-[#86868B]">
+            Subdomain: <span className="font-mono text-[#017EFC]">solution.kliklisensi.com</span>
           </div>
         </div>
       </footer>

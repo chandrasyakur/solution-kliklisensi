@@ -4,27 +4,32 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 antialiased min-h-screen selection:bg-indigo-500 selection:text-white;
+    @apply bg-[#FAFAFC] text-[#202125] antialiased min-h-screen;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 }
 
 /* Custom subtle scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #090d16;
+  background: #F5F5F7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: #D1D1D6;
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: #A1A1A6;
 }
 
-/* Radial ambient glow effect */
-.bg-radial-glow {
-  background-image: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
+/* Klik Lisensi button base transition */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold text-white bg-[#017EFC] hover:bg-[#006ee0] active:scale-[0.98] transition-all duration-150 shadow-sm shadow-blue-500/20;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full font-medium text-[#202125] bg-white border border-[#E5E5E9] hover:bg-[#F5F5F7] active:scale-[0.98] transition-all duration-150;
 }
