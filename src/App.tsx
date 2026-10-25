@@ -22,7 +22,7 @@ const INITIAL_FORM_DATA: AssessmentFormData = {
   selectedBottlenecks: [],
   primaryBottleneckElaboration: '',
   desiredSolution: '',
-  timeline: 'Dalam 1–3 Bulan ke Depan',
+  timeline: 'Dalam 1-3 Bulan',
   contactName: '',
   whatsapp: '',
   email: '',
@@ -30,10 +30,10 @@ const INITIAL_FORM_DATA: AssessmentFormData = {
 };
 
 const STEP_NAMES = [
-  'Profil Usaha',
-  'Diagnosa Kendala',
-  'Prioritas Solusi',
-  'Kontak PIC',
+  'Profil',
+  'Kendala',
+  'Prioritas',
+  'Kontak',
 ];
 
 export const App: React.FC = () => {
@@ -101,12 +101,12 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFC] text-[#202125] flex flex-col relative font-sans">
+    <div className="min-h-screen bg-[#FAFAFC] text-[#1D1D1F] flex flex-col relative font-sans">
       {/* Top Header */}
-      <Header />
+      <Header onStart={handleStart} isFormActive={step > 0} />
 
       {/* Main Content Area */}
-      <main className="flex-1 flex flex-col justify-center py-6 sm:py-8">
+      <main className="flex-1 flex flex-col justify-center py-8 sm:py-12">
         {step > 0 && step < 5 && (
           <Reveal delay={50}>
             <ProgressBar
@@ -176,23 +176,18 @@ export const App: React.FC = () => {
         )}
       </main>
 
-      {/* Clean Minimalist Footer: Powered by Klik Lisensi */}
-      <footer className="border-t border-[#E5E5E9] bg-white py-6 text-center text-xs text-[#515151]">
-        <div className="max-w-4xl mx-auto px-4 flex items-center justify-center">
-          <div className="flex items-center gap-1.5 font-medium">
+      {/* Clean Minimalist Footer */}
+      <footer className="border-t border-[#E5E5E9] bg-white py-8 text-center text-xs text-[#86868B]">
+        <div className="max-w-4xl mx-auto px-6 flex items-center justify-center">
+          <div className="flex items-center gap-1.5 font-normal">
             <span>Powered by</span>
             <button
               onClick={() => setIsAdminOpen(true)}
-              className="font-bold text-[#017EFC] hover:underline cursor-pointer"
-              title={leadCount > 0 ? `${leadCount} data tersimpan` : 'Klik Lisensi Solution'}
+              className="font-medium text-[#1D1D1F] hover:underline cursor-pointer"
+              title={leadCount > 0 ? `${leadCount} data masuk` : 'Panel Data'}
             >
               Klik Lisensi
             </button>
-            {leadCount > 0 && (
-              <span className="ml-1 px-1.5 py-0.2 rounded-full bg-[#EFF6FF] text-[#017EFC] border border-[#BFDBFE] text-[10px] font-bold">
-                {leadCount}
-              </span>
-            )}
           </div>
         </div>
       </footer>

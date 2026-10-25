@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, User, Phone, Mail, Award, ShieldCheck, Loader2, Sparkles } from 'lucide-react';
+import { ArrowLeft, Loader2 } from 'lucide-react';
 import { AssessmentFormData } from '../types/assessment';
 
 interface StepContactProps {
@@ -23,102 +23,85 @@ export const StepContact: React.FC<StepContactProps> = ({
     data.role.trim().length > 0;
 
   return (
-    <div className="w-full max-w-2xl mx-auto px-4 py-2 space-y-6">
+    <div className="w-full max-w-2xl mx-auto px-6 py-6 space-y-8">
       {/* Step Header */}
-      <div className="space-y-1">
-        <span className="text-xs font-semibold uppercase tracking-wider text-[#017EFC]">
-          Langkah 4 dari 4
-        </span>
-        <h2 className="text-2xl font-bold text-[#202125] tracking-tight">
-          Informasi PIC & Pengiriman Ringkasan Diagnostik
+      <div className="space-y-1.5">
+        <h2 className="text-2xl sm:text-3xl font-bold text-[#1D1D1F] tracking-tight">
+          Informasi Kontak
         </h2>
-        <p className="text-sm text-[#515151]">
-          Ringkasan analisis dan rekomendasi arsitektur digital akan langsung disajikan di layar berikutnya dan dikonfirmasi via WhatsApp.
+        <p className="text-sm text-[#86868B]">
+          Data kontak untuk konfirmasi ringkasan hasil diagnosa.
         </p>
       </div>
 
-      <div className="space-y-5 bg-white border border-[#E5E5E9] p-6 rounded-[14px] shadow-apple-sm">
+      <div className="space-y-6 bg-white border border-[#E5E5E9] p-7 sm:p-8 rounded-[18px] shadow-apple-sm">
         {/* Nama PIC */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
-            <User className="w-4 h-4 text-[#017EFC]" />
-            Nama Lengkap PIC / Pemilik Usaha <span className="text-rose-500">*</span>
+          <label className="text-xs font-semibold text-[#1D1D1F]">
+            Nama Lengkap
           </label>
           <input
             type="text"
             placeholder="Contoh: Budi Santoso"
             value={data.contactName}
             onChange={(e) => onChange({ contactName: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] placeholder-[#86868B] outline-none transition duration-150"
+            className="w-full h-12 px-4 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#1D1D1F] focus:ring-1 focus:ring-[#1D1D1F] text-sm text-[#1D1D1F] placeholder-[#86868B] outline-none transition duration-150"
           />
         </div>
 
         {/* Nomor WhatsApp */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
-            <Phone className="w-4 h-4 text-[#10B981]" />
-            Nomor WhatsApp Aktif <span className="text-rose-500">*</span>
+          <label className="text-xs font-semibold text-[#1D1D1F]">
+            Nomor WhatsApp
           </label>
           <input
             type="tel"
-            placeholder="0812xxxxxxxx atau 62812xxxxxxxx"
+            placeholder="0812xxxxxxxx"
             value={data.whatsapp}
             onChange={(e) => onChange({ whatsapp: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] placeholder-[#86868B] outline-none transition duration-150"
+            className="w-full h-12 px-4 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#1D1D1F] focus:ring-1 focus:ring-[#1D1D1F] text-sm text-[#1D1D1F] placeholder-[#86868B] outline-none transition duration-150"
           />
-          <p className="text-[11px] text-[#515151]">
-            Digunakan untuk konfirmasi summary & penjadwalan sesi diskusi solutif jika diperlukan.
-          </p>
         </div>
 
-        {/* Jabatan di Bisnis */}
+        {/* Jabatan */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
-            <Award className="w-4 h-4 text-[#017EFC]" />
-            Peran / Jabatan Anda <span className="text-rose-500">*</span>
+          <label className="text-xs font-semibold text-[#1D1D1F]">
+            Jabatan di Bisnis
           </label>
           <select
             value={data.role}
             onChange={(e) => onChange({ role: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] outline-none transition duration-150 cursor-pointer"
+            className="w-full h-12 px-4 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#1D1D1F] focus:ring-1 focus:ring-[#1D1D1F] text-sm text-[#1D1D1F] outline-none transition duration-150 cursor-pointer"
           >
             <option value="Owner / Founder">Owner / Founder</option>
-            <option value="Co-Founder / Direktur">Co-Founder / Direktur</option>
-            <option value="Manager Operasional / Marketing">Manager Operasional / Marketing</option>
-            <option value="Staff / PIC IT">Staff / PIC IT</option>
+            <option value="Direktur / Co-Founder">Direktur / Co-Founder</option>
+            <option value="Manager Operasional">Manager Operasional</option>
             <option value="Lainnya">Lainnya</option>
           </select>
         </div>
 
-        {/* Email (Opsional) */}
+        {/* Email */}
         <div className="space-y-2">
-          <label className="flex items-center gap-2 text-xs font-semibold text-[#202125]">
-            <Mail className="w-4 h-4 text-[#017EFC]" />
-            Alamat Email <span className="text-[#86868B] font-normal">(Opsional)</span>
+          <label className="text-xs font-semibold text-[#1D1D1F]">
+            Email (opsional)
           </label>
           <input
             type="email"
             placeholder="nama@perusahaan.com"
             value={data.email}
             onChange={(e) => onChange({ email: e.target.value })}
-            className="w-full px-4 py-2.5 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#017EFC] focus:ring-2 focus:ring-[#017EFC]/10 text-sm text-[#202125] placeholder-[#86868B] outline-none transition duration-150"
+            className="w-full h-12 px-4 rounded-[10px] bg-white border border-[#E5E5E9] focus:border-[#1D1D1F] focus:ring-1 focus:ring-[#1D1D1F] text-sm text-[#1D1D1F] placeholder-[#86868B] outline-none transition duration-150"
           />
-        </div>
-
-        {/* Security guarantee */}
-        <div className="flex items-center gap-2 pt-2 text-[11px] text-[#515151]">
-          <ShieldCheck className="w-4 h-4 text-[#10B981] flex-shrink-0" />
-          <span>Privasi data bisnis Anda 100% terjaga dan tidak akan dibagikan ke pihak ketiga mana pun.</span>
         </div>
       </div>
 
-      {/* Navigation Buttons */}
+      {/* Consistent Buttons Token */}
       <div className="flex items-center justify-between pt-2">
         <button
           type="button"
           onClick={onBack}
           disabled={isLoading}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-[#515151] hover:text-[#202125] hover:bg-[#E5E5E9]/50 transition duration-150"
+          className="h-12 px-6 rounded-full text-sm font-medium text-[#505052] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-all duration-150 inline-flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Kembali</span>
@@ -128,22 +111,19 @@ export const StepContact: React.FC<StepContactProps> = ({
           type="button"
           disabled={!isFormValid || isLoading}
           onClick={onSubmit}
-          className={`inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-bold text-sm transition-all duration-150 ${
+          className={`h-12 px-8 rounded-full text-sm font-medium inline-flex items-center justify-center gap-2 transition-all duration-150 ${
             isFormValid && !isLoading
-              ? 'bg-[#017EFC] hover:bg-[#006ee0] text-white shadow-md shadow-blue-500/25 active:scale-[0.98]'
+              ? 'bg-[#1D1D1F] hover:bg-[#3A3A3C] text-white active:scale-[0.98]'
               : 'bg-[#E5E5E9] text-[#86868B] cursor-not-allowed'
           }`}
         >
           {isLoading ? (
             <>
               <Loader2 className="w-4 h-4 animate-spin" />
-              <span>Memproses Diagnostik...</span>
+              <span>Memproses...</span>
             </>
           ) : (
-            <>
-              <Sparkles className="w-4 h-4 text-white" />
-              <span>Kirim & Lihat Laporan Diagnostik</span>
-            </>
+            <span>Lihat Hasil Diagnosa</span>
           )}
         </button>
       </div>

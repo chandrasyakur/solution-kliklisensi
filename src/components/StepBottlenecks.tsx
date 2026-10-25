@@ -36,56 +36,53 @@ export const StepBottlenecks: React.FC<StepBottlenecksProps> = ({
   const isFormValid = selectedCount > 0;
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4 py-2 space-y-6">
+    <div className="w-full max-w-3xl mx-auto px-6 py-6 space-y-8">
       {/* Step Header */}
-      <div className="space-y-1">
+      <div className="space-y-1.5">
         <div className="flex items-center justify-between">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#017EFC]">
-            Langkah 2 dari 4
-          </span>
-          <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-[#EFF6FF] text-[#017EFC] border border-[#BFDBFE]">
-            {selectedCount} Terpilih
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#1D1D1F] tracking-tight">
+            Kendala Operasional
+          </h2>
+          <span className="text-xs font-medium text-[#86868B]">
+            {selectedCount} dipilih
           </span>
         </div>
-        <h2 className="text-2xl font-bold text-[#202125] tracking-tight">
-          Apa Saja Kendala Operasional yang Sedang Dialami?
-        </h2>
-        <p className="text-sm text-[#515151]">
-          Pilih semua kondisi yang sesuai dengan operasional Anda saat ini (bisa memilih lebih dari 1).
+        <p className="text-sm text-[#86868B]">
+          Pilih kendala yang saat ini dialami operasional bisnis Anda.
         </p>
       </div>
 
-      {/* Segmented Filter Control (Apple / Klik Lisensi Golden Master style) */}
-      <div className="flex items-center gap-1 p-1 rounded-[10px] bg-[#F5F5F7] border border-[#E5E5E9] overflow-x-auto scrollbar-none text-xs">
+      {/* Segmented Filter Control: Pill shaped, clean */}
+      <div className="flex items-center gap-1 p-1 rounded-full bg-[#F5F5F7] border border-[#E5E5E9] overflow-x-auto scrollbar-none text-xs">
         <button
           type="button"
           onClick={() => setActiveTab('all')}
-          className={`px-3 py-1.5 rounded-[8px] font-medium whitespace-nowrap transition-all duration-150 ${
+          className={`h-8 px-4 rounded-full font-medium whitespace-nowrap transition-all duration-150 ${
             activeTab === 'all'
-              ? 'bg-white text-[#202125] font-semibold shadow-xs'
-              : 'text-[#515151] hover:text-[#202125] hover:bg-[#EBEBED]/60'
+              ? 'bg-white text-[#1D1D1F] shadow-xs'
+              : 'text-[#86868B] hover:text-[#1D1D1F]'
           }`}
         >
-          Semua (12)
+          Semua
         </button>
         <button
           type="button"
           onClick={() => setActiveTab('sales')}
-          className={`px-3 py-1.5 rounded-[8px] font-medium whitespace-nowrap transition-all duration-150 ${
+          className={`h-8 px-4 rounded-full font-medium whitespace-nowrap transition-all duration-150 ${
             activeTab === 'sales'
-              ? 'bg-white text-[#202125] font-semibold shadow-xs'
-              : 'text-[#515151] hover:text-[#202125] hover:bg-[#EBEBED]/60'
+              ? 'bg-white text-[#1D1D1F] shadow-xs'
+              : 'text-[#86868B] hover:text-[#1D1D1F]'
           }`}
         >
-          Sales & Akuisisi
+          Sales & Web
         </button>
         <button
           type="button"
           onClick={() => setActiveTab('operations')}
-          className={`px-3 py-1.5 rounded-[8px] font-medium whitespace-nowrap transition-all duration-150 ${
+          className={`h-8 px-4 rounded-full font-medium whitespace-nowrap transition-all duration-150 ${
             activeTab === 'operations'
-              ? 'bg-white text-[#202125] font-semibold shadow-xs'
-              : 'text-[#515151] hover:text-[#202125] hover:bg-[#EBEBED]/60'
+              ? 'bg-white text-[#1D1D1F] shadow-xs'
+              : 'text-[#86868B] hover:text-[#1D1D1F]'
           }`}
         >
           Operasional & Data
@@ -93,29 +90,29 @@ export const StepBottlenecks: React.FC<StepBottlenecksProps> = ({
         <button
           type="button"
           onClick={() => setActiveTab('crm')}
-          className={`px-3 py-1.5 rounded-[8px] font-medium whitespace-nowrap transition-all duration-150 ${
+          className={`h-8 px-4 rounded-full font-medium whitespace-nowrap transition-all duration-150 ${
             activeTab === 'crm'
-              ? 'bg-white text-[#202125] font-semibold shadow-xs'
-              : 'text-[#515151] hover:text-[#202125] hover:bg-[#EBEBED]/60'
+              ? 'bg-white text-[#1D1D1F] shadow-xs'
+              : 'text-[#86868B] hover:text-[#1D1D1F]'
           }`}
         >
-          Customer & Retensi
+          CRM & WhatsApp
         </button>
         <button
           type="button"
           onClick={() => setActiveTab('automation')}
-          className={`px-3 py-1.5 rounded-[8px] font-medium whitespace-nowrap transition-all duration-150 ${
+          className={`h-8 px-4 rounded-full font-medium whitespace-nowrap transition-all duration-150 ${
             activeTab === 'automation'
-              ? 'bg-white text-[#202125] font-semibold shadow-xs'
-              : 'text-[#515151] hover:text-[#202125] hover:bg-[#EBEBED]/60'
+              ? 'bg-white text-[#1D1D1F] shadow-xs'
+              : 'text-[#86868B] hover:text-[#1D1D1F]'
           }`}
         >
-          Otomasi & AI
+          Automasi & AI
         </button>
       </div>
 
       {/* Grid of Bottleneck Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {filteredItems.map((item) => {
           const isSelected = data.selectedBottlenecks.includes(item.id);
 
@@ -123,46 +120,34 @@ export const StepBottlenecks: React.FC<StepBottlenecksProps> = ({
             <div
               key={item.id}
               onClick={() => toggleBottleneck(item.id)}
-              className={`p-4 rounded-[12px] border text-left cursor-pointer transition-all duration-150 flex flex-col justify-between ${
+              className={`p-5 rounded-[16px] border text-left cursor-pointer transition-all duration-150 flex flex-col justify-between ${
                 isSelected
-                  ? 'bg-[#EFF6FF] border-[#017EFC] shadow-apple-sm ring-1 ring-[#017EFC]'
-                  : 'bg-white border-[#E5E5E9] hover:border-[#BFDBFE] hover:bg-[#FBFBFC]'
+                  ? 'bg-[#FBFBFC] border-[#1D1D1F] shadow-apple-sm'
+                  : 'bg-white border-[#E5E5E9] hover:border-[#1D1D1F]'
               }`}
             >
-              <div>
-                <div className="flex items-start justify-between gap-2 mb-2">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded bg-[#F5F5F7] text-[#515151]">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[11px] font-medium text-[#86868B]">
                     {item.categoryLabel}
                   </span>
-
-                  {/* Custom Checkbox */}
                   <div
-                    className={`w-5 h-5 rounded-[6px] flex items-center justify-center transition-colors ${
+                    className={`w-5 h-5 rounded-full flex items-center justify-center transition-colors ${
                       isSelected
-                        ? 'bg-[#017EFC] text-white'
+                        ? 'bg-[#1D1D1F] text-white'
                         : 'border border-[#D1D1D6] bg-white'
                     }`}
                   >
-                    {isSelected && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                    {isSelected && <Check className="w-3 h-3 stroke-[2.5]" />}
                   </div>
                 </div>
 
-                <h3 className={`text-sm font-semibold mb-1 transition-colors ${
-                  isSelected ? 'text-[#017EFC]' : 'text-[#202125]'
-                }`}>
+                <h3 className="text-sm font-semibold text-[#1D1D1F]">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#515151] leading-relaxed mb-3">
+                <p className="text-xs text-[#86868B] leading-relaxed">
                   {item.description}
                 </p>
-              </div>
-
-              {/* Bottom Tag */}
-              <div className="pt-2 border-t border-[#E5E5E9] flex items-center justify-between text-[11px]">
-                <span className="text-[#86868B]">Solusi relevan:</span>
-                <span className="font-semibold text-[#017EFC] bg-white px-2 py-0.5 rounded border border-[#BFDBFE]">
-                  {item.solutionTag}
-                </span>
               </div>
             </div>
           );
@@ -170,18 +155,18 @@ export const StepBottlenecks: React.FC<StepBottlenecksProps> = ({
       </div>
 
       {!isFormValid && (
-        <div className="flex items-center gap-2 p-3 rounded-[10px] bg-[#FFFBEB] border border-[#FDE68A] text-xs text-[#92400E]">
-          <AlertCircle className="w-4 h-4 flex-shrink-0" />
-          <span>Silakan pilih minimal 1 kendala untuk melanjutkan analisis.</span>
+        <div className="flex items-center gap-2 text-xs text-[#86868B]">
+          <AlertCircle className="w-4 h-4 text-[#F59E0B]" />
+          <span>Pilih minimal satu kendala untuk melanjutkan.</span>
         </div>
       )}
 
-      {/* Navigation Buttons */}
+      {/* Consistent Buttons Token */}
       <div className="flex items-center justify-between pt-2">
         <button
           type="button"
           onClick={onBack}
-          className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-full text-xs font-semibold text-[#515151] hover:text-[#202125] hover:bg-[#E5E5E9]/50 transition duration-150"
+          className="h-12 px-6 rounded-full text-sm font-medium text-[#505052] hover:text-[#1D1D1F] hover:bg-[#F5F5F7] transition-all duration-150 inline-flex items-center gap-2"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Kembali</span>
@@ -191,13 +176,13 @@ export const StepBottlenecks: React.FC<StepBottlenecksProps> = ({
           type="button"
           disabled={!isFormValid}
           onClick={onNext}
-          className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm transition-all duration-150 ${
+          className={`h-12 px-7 rounded-full text-sm font-medium inline-flex items-center justify-center gap-2 transition-all duration-150 ${
             isFormValid
-              ? 'bg-[#017EFC] hover:bg-[#006ee0] text-white shadow-md shadow-blue-500/20 active:scale-[0.98]'
+              ? 'bg-[#1D1D1F] hover:bg-[#3A3A3C] text-white active:scale-[0.98]'
               : 'bg-[#E5E5E9] text-[#86868B] cursor-not-allowed'
           }`}
         >
-          <span>Lanjut ke Prioritas Solusi</span>
+          <span>Lanjut ke Prioritas</span>
           <ArrowRight className="w-4 h-4" />
         </button>
       </div>

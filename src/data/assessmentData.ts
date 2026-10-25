@@ -109,7 +109,7 @@ export const BOTTLENECK_OPTIONS: BottleneckItem[] = [
     id: 'auto-repetitive-tasks',
     category: 'automation',
     categoryLabel: 'Otomasi & AI',
-    title: 'Tugas Repetitif Menghabiskan 2–4 Jam Tiap Hari',
+    title: 'Tugas Repetitif Menghabiskan 2-4 Jam Tiap Hari',
     description: 'Kirim invoice, verifikasi mutasi bayar, update status order masih diklik satu per satu oleh manusia.',
     solutionTag: 'Automasi AI',
   },
@@ -141,8 +141,8 @@ export const DESIRED_SOLUTIONS = [
 ];
 
 export const TIMELINES = [
-  'Segera (Bulan Ini / 1–2 Minggu)',
-  'Dalam 1–3 Bulan ke Depan',
+  'Segera (Bulan Ini / 1-2 Minggu)',
+  'Dalam 1-3 Bulan ke Depan',
   'Hanya Cari Info / Riset Awal',
 ];
 

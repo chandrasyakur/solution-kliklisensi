@@ -15,19 +15,19 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   const percentage = Math.round(((currentStep - 1) / (totalSteps - 1)) * 100);
 
   return (
-    <div className="w-full max-w-3xl mx-auto mb-6 px-4">
+    <div className="w-full max-w-2xl mx-auto mb-8 px-6">
       {/* Top indicator text */}
-      <div className="flex items-center justify-between text-xs text-[#515151] mb-2 font-medium">
-        <span className="font-semibold text-[#017EFC]">
+      <div className="flex items-center justify-between text-xs text-[#86868B] mb-2.5">
+        <span className="font-semibold text-[#1D1D1F]">
           Langkah {currentStep} dari {totalSteps}: {stepNames[currentStep - 1]}
         </span>
-        <span className="text-[#86868B]">{percentage}% Selesai</span>
+        <span>{percentage}%</span>
       </div>
 
       {/* Progress track */}
-      <div className="w-full h-1.5 bg-[#E5E5E9] rounded-full overflow-hidden">
+      <div className="w-full h-1 bg-[#E5E5E9] rounded-full overflow-hidden">
         <div
-          className="h-full bg-[#017EFC] rounded-full transition-all duration-400 ease-out"
+          className="h-full bg-[#1D1D1F] rounded-full transition-all duration-300 ease-out"
           style={{ width: `${Math.max(percentage, 5)}%` }}
         />
       </div>
@@ -44,22 +44,22 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
               key={name}
               className={`flex items-center gap-1.5 transition-colors ${
                 isCurrent
-                  ? 'text-[#017EFC] font-bold'
+                  ? 'text-[#1D1D1F] font-semibold'
                   : isDone
-                  ? 'text-[#202125] font-medium'
+                  ? 'text-[#505052]'
                   : 'text-[#86868B]'
               }`}
             >
               <div
-                className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-semibold transition-all ${
+                className={`w-4 h-4 rounded-full flex items-center justify-center text-[9px] font-semibold transition-all ${
                   isDone
-                    ? 'bg-[#EFF6FF] text-[#017EFC] border border-[#BFDBFE]'
+                    ? 'bg-[#1D1D1F] text-white'
                     : isCurrent
-                    ? 'bg-[#017EFC] text-white shadow-sm'
-                    : 'bg-[#F5F5F7] border border-[#E5E5E9] text-[#86868B]'
+                    ? 'border-2 border-[#1D1D1F] text-[#1D1D1F]'
+                    : 'bg-[#F5F5F7] text-[#86868B]'
                 }`}
               >
-                {isDone ? <Check className="w-3 h-3 stroke-[2.5]" /> : stepNum}
+                {isDone ? <Check className="w-2.5 h-2.5 stroke-[3]" /> : stepNum}
               </div>
               <span>{name}</span>
             </div>
