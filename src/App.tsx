@@ -11,6 +11,7 @@ import { AdminDrawer } from './components/AdminDrawer';
 import { AssessmentFormData, DiagnosticResult } from './types/assessment';
 import { generateDiagnostic } from './data/assessmentData';
 import { submitAssessment, getLocalSavedLeads } from './lib/supabase';
+import { Reveal } from './components/ui/Reveal';
 
 const INITIAL_FORM_DATA: AssessmentFormData = {
   businessName: '',
@@ -102,80 +103,96 @@ export const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#FAFAFC] text-[#202125] flex flex-col relative font-sans">
       {/* Top Header */}
-      <Header
-        onOpenAdmin={() => setIsAdminOpen(true)}
-        leadCount={leadCount}
-      />
+      <Header />
 
       {/* Main Content Area */}
       <main className="flex-1 flex flex-col justify-center py-6 sm:py-8">
         {step > 0 && step < 5 && (
-          <ProgressBar
-            currentStep={step}
-            totalSteps={4}
-            stepNames={STEP_NAMES}
-          />
+          <Reveal delay={50}>
+            <ProgressBar
+              currentStep={step}
+              totalSteps={4}
+              stepNames={STEP_NAMES}
+            />
+          </Reveal>
         )}
 
         {/* Step Routing */}
         {step === 0 && <StepIntro onStart={handleStart} />}
 
         {step === 1 && (
-          <StepBusinessProfile
-            data={formData}
-            onChange={updateFormData}
-            onNext={handleNextStep}
-            onBack={handlePrevStep}
-          />
+          <Reveal delay={50}>
+            <StepBusinessProfile
+              data={formData}
+              onChange={updateFormData}
+              onNext={handleNextStep}
+              onBack={handlePrevStep}
+            />
+          </Reveal>
         )}
 
         {step === 2 && (
-          <StepBottlenecks
-            data={formData}
-            onChange={updateFormData}
-            onNext={handleNextStep}
-            onBack={handlePrevStep}
-          />
+          <Reveal delay={50}>
+            <StepBottlenecks
+              data={formData}
+              onChange={updateFormData}
+              onNext={handleNextStep}
+              onBack={handlePrevStep}
+            />
+          </Reveal>
         )}
 
         {step === 3 && (
-          <StepPriority
-            data={formData}
-            onChange={updateFormData}
-            onNext={handleNextStep}
-            onBack={handlePrevStep}
-          />
+          <Reveal delay={50}>
+            <StepPriority
+              data={formData}
+              onChange={updateFormData}
+              onNext={handleNextStep}
+              onBack={handlePrevStep}
+            />
+          </Reveal>
         )}
 
         {step === 4 && (
-          <StepContact
-            data={formData}
-            onChange={updateFormData}
-            onSubmit={handleSubmit}
-            onBack={handlePrevStep}
-            isLoading={isLoading}
-          />
+          <Reveal delay={50}>
+            <StepContact
+              data={formData}
+              onChange={updateFormData}
+              onSubmit={handleSubmit}
+              onBack={handlePrevStep}
+              isLoading={isLoading}
+            />
+          </Reveal>
         )}
 
         {step === 5 && diagnostic && (
-          <StepResult
-            formData={formData}
-            diagnostic={diagnostic}
-            onReset={handleReset}
-          />
+          <Reveal delay={50}>
+            <StepResult
+              formData={formData}
+              diagnostic={diagnostic}
+              onReset={handleReset}
+            />
+          </Reveal>
         )}
       </main>
 
-      {/* Footer */}
+      {/* Clean Minimalist Footer: Powered by Klik Lisensi */}
       <footer className="border-t border-[#E5E5E9] bg-white py-6 text-center text-xs text-[#515151]">
-        <div className="max-w-4xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-[#202125]">Klik Lisensi</span>
-            <span className="text-[#86868B]">•</span>
-            <span>Digital Infrastructure & Business Diagnostic Portal</span>
-          </div>
-          <div className="text-[11px] text-[#86868B]">
-            Subdomain: <span className="font-mono text-[#017EFC]">solution.kliklisensi.com</span>
+        <div className="max-w-4xl mx-auto px-4 flex items-center justify-center">
+          <div className="flex items-center gap-1.5 font-medium">
+            <span>Powered by</span>
+            <button
+              onClick={() => setIsAdminOpen(true)}
+              className="font-bold text-[#017EFC] hover:underline cursor-pointer"
+              title={leadCount > 0 ? `${leadCount} data tersimpan` : 'Klik Lisensi Solution'}
+            >
+              Klik Lisensi
+            </button>
+            {leadCount > 0 && (
+              <span className="ml-1 px-1.5 py-0.2 rounded-full bg-[#EFF6FF] text-[#017EFC] border border-[#BFDBFE] text-[10px] font-bold">
+                {leadCount}
+              </span>
+            )}
           </div>
         </div>
       </footer>
